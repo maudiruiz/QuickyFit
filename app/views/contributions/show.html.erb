@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First item:</b>
+  <%= @contribution.first_item_id %>
+</p>
+
+<p>
+  <b>Second item:</b>
+  <%= @contribution.second_item_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @contribution.user_id %>
+</p>
+
+<p>
+  <b>First item grade:</b>
+  <%= @contribution.first_item_grade %>
+</p>
+
+<p>
+  <b>Second item grade:</b>
+  <%= @contribution.second_item_grade %>
+</p>
+
+<p>
+  <b>Opinion:</b>
+  <%= @contribution.opinion %>
+</p>
+
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>
