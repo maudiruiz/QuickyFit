@@ -1,4 +1,16 @@
 Quickyfit::Application.routes.draw do
+  resources :types
+
+  resources :items
+
+  resources :searches
+
+  resources :contributions
+
+  resources :users
+
+  match 'items/get_children/:id' => 'items#get_children'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
