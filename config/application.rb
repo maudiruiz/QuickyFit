@@ -44,5 +44,8 @@ module Quickyfit
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.precompile << "locales/*.js"
+    
+    config.assets.precompile += %w(rails_admin/rails_admin.js rails_admin/rails_admin.css)
   end
 end
