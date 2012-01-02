@@ -10,5 +10,7 @@ class DisplayController < ApplicationController
       format.json { render json: @contributions }
     end
   end
-
+  def get_drugs
+    render :json => Contribution.search(params[:term])
+  end
 end

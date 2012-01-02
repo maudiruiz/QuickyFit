@@ -12,8 +12,12 @@ Quickyfit::Application.routes.draw do
   resources :users
 
   match 'items/get_children/:id' => 'items#get_children'
-  get 'contribution' => 'contributions#index', :as => 'contribution'   
-
+  get 'contribution' => 'contributions#index', :as => 'contribution' 
+  resources :display do
+  collection do
+    get :get_drugs
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
