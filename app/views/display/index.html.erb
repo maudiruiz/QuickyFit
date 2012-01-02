@@ -1,6 +1,16 @@
 <%# debug @itemsok.to_a %>
 <%#= @itemsok.map{ |item| item.first_item.id } %><br>
 
+
+<%= form_tag(root_path, :method => "get") do %>
+  <%= label_tag(:number1, "First Item Id") %>
+  <%= text_field_tag(:number1) %>
+  <%= label_tag(:number1, "First Item Grade") %>
+  <%= text_field_tag(:number2) %>
+  <%= submit_tag("Do it!" , :remote => true) %>
+<% end %>
+
+
 <% @itemsok.each do |searches| %>
 <table>
 <tr>
@@ -14,11 +24,3 @@
 </tr>
 </table>
 <%end%>
-
-<%= form_tag(root_path, :method => "get") do %>
-  <%= label_tag(:number1, "First Item Id") %>
-  <%= text_field_tag(:number1) %>
-  <%= label_tag(:number1, "First Item Grade") %>
-  <%= text_field_tag(:number2) %>
-  <%= submit_tag("Do it!" , :remote => true) %>
-<% end %>
