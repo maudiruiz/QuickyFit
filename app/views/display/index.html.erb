@@ -1,0 +1,24 @@
+<%# debug @itemsok.to_a %>
+<%#= @itemsok.map{ |item| item.first_item.id } %><br>
+
+<% @itemsok.each do |searches| %>
+<table>
+<tr>
+  <td style="width:100px;"><%= searches.first_item.description %>  </td>
+  <td style="width:150px; font-size:30px;"><%= searches.first_item_grade %>  </td>
+
+
+  <td style="width:150px;"><%= searches.second_item.description %> </td>
+  <td style="width:150px; font-size:30px;"><%= searches.second_item_grade %>  </td>
+
+</tr>
+</table>
+<%end%>
+
+<%= form_tag(root_path, :method => "get") do %>
+  <%= label_tag(:number1, "First Item Id") %>
+  <%= text_field_tag(:number1) %>
+  <%= label_tag(:number1, "First Item Grade") %>
+  <%= text_field_tag(:number2) %>
+  <%= submit_tag("Do it!" , :remote => true) %>
+<% end %>

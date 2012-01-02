@@ -1,12 +1,16 @@
 class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
+  
   def index
     @searches = Search.all
-
+    @items = Item.all
+  @itemsok = Search.where("first_item_id = ?",3).where("second_item_id = ?",1) 
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @searches }
+    
     end
   end
 
@@ -46,6 +50,7 @@ class SearchesController < ApplicationController
       if @search.save
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
         format.json { render json: @search, status: :created, location: @search }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @search.errors, status: :unprocessable_entity }

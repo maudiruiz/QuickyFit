@@ -2,7 +2,12 @@ class ContributionsController < ApplicationController
   # GET /contributions
   # GET /contributions.json
   def index
+    
     @contributions = Contribution.all
+    @number1 = params[:number1]
+    @number2 = params[:number2]
+    @itemsok = Contribution.where("first_item_id = ?",@number1).where("first_item_grade = ?",@number2) 
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,16 +15,17 @@ class ContributionsController < ApplicationController
     end
   end
 
-  # GET /contributions/1
+  # 
   # GET /contributions/1.json
   def show
     @contribution = Contribution.find(params[:id])
-
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contribution }
     end
   end
+
 
   # GET /contributions/new
   # GET /contributions/new.json

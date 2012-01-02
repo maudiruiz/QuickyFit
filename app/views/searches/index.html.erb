@@ -24,6 +24,21 @@
 <% end %>
 </table>
 
+
+
+
+
 <br />
 
 <%= link_to 'New Search', new_search_path %>
+
+
+
+<%= debug @itemsok.to_a %>
+
+<%= @itemsok.map{ |item| item.first_item.id } %>
+
+<% @itemsok.each do |searches| %>
+<br><%= searches.first_item.description %><br>
+
+<% end %>

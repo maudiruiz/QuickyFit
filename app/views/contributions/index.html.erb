@@ -24,6 +24,8 @@
     <td><%= link_to 'Show', contribution %></td>
     <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
     <td><%= link_to 'Destroy', contribution, confirm: 'Are you sure?', method: :delete %></td>
+
+	
   </tr>
 <% end %>
 </table>
@@ -31,3 +33,31 @@
 <br />
 
 <%= link_to 'New Contribution', new_contribution_path %>
+
+<%# debug @itemsok.to_a %>
+
+<%= @itemsok.map{ |item| item.first_item.id } %><br>
+
+<% @itemsok.each do |searches| %>
+<table>
+<tr>
+  <td style="width:100px;"><%= searches.first_item.description %>  </td>
+  <td style="width:150px; font-size:30px;"><%= searches.first_item_grade %>  </td>
+
+
+  <td style="width:150px;"><%= searches.second_item.description %> </td>
+  <td style="width:150px; font-size:30px;"><%= searches.second_item_grade %>  </td>
+
+</tr>
+</table>
+<%end%>
+
+<form accept-charset="UTF-8" action="/contribution" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label for="number1">First Item Id</label>
+  <input id="number1" name="number1" type="text" />
+  <label for="number1">First Item Grade</label>
+  <input id="number2" name="number2" type="text" />
+  <input name="commit" remote="true" type="submit" value="Do it!" />
+</form>
+
+
