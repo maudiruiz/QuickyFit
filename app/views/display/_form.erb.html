@@ -1,0 +1,7 @@
+<%= form_tag(:url =>{:action => 'my_action'}, :method => "get") do %>
+  <%= label_tag(:number1, "First Item Id") %>
+  <%= text_field_tag(:number1) %>
+  <%= label_tag(:number1, "First Item Grade") %>
+  <%= text_field_tag(:number2) %>
+  <%= submit_tag("Do it!" , :remote => true) %>
+<% end %>
