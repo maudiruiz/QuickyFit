@@ -8,5 +8,9 @@ class Item < ActiveRecord::Base
   def Item.get_children item_id
     Item.find(:all, :conditions => ["parent_id = ?", item_id])
   end
+  def self.search (termn)
+  Item.where("description LIKE '%"+termn+"%'")  
+    
+  end
 
 end

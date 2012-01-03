@@ -11,6 +11,7 @@ class DisplayController < ApplicationController
     end
   end
   def get_drugs
-    render :json => Contribution.search(params[:term])
+    
+    render :json => Item.search(params[:term])
   end
 end
