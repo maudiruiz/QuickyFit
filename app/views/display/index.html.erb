@@ -16,7 +16,9 @@
 <% end %>
 
 
-<% @itemsok.each do |searches| %>
+<%if not @itemsok.nil? 
+  @itemsok.each do |searches|
+%>
 <table>
 <tr>
   <td style="width:100px;"><%= searches.first_item.description %>  </td>
@@ -28,7 +30,8 @@
 
 </tr>
 </table>
-<%end%>
+  <%end
+end%>
 <%= form_tag(root_path, :method => "get") do %>
 
 <% end %>
