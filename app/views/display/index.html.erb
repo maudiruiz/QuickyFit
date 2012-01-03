@@ -2,13 +2,16 @@
 <%#= @itemsok.map{ |item| item.first_item.id } %><br>
 
 
-<%= form_tag(root_path, :method => "get") do %>
+<%= form_tag(root_path, :method => "post") do %>
   <%= label_tag(:number1, "El que quiero") %>
-  <%= text_field_tag :number1,nil, :class => 'drug_autocomplete' %>
+  <%= text_field_tag :quiero,nil, :class => 'drug_autocomplete' %>
+  <%= hidden_field_tag :number1 %>
 
   <%= label_tag(:number1, "Talla del que tengo") %>
-  <%= text_field_tag :number2,nil, :class => 'drug_autocomplete' %>
-  <%= submit_tag("Do it!" , :remote => true) %>
+  <%= text_field_tag :tengo,nil, :class => 'drug_autocomplete' %>
+  <%= hidden_field_tag :number2 %>
+
+  <%= submit_tag("Do it!") %>
 
 <% end %>
 
