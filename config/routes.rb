@@ -1,5 +1,7 @@
 Quickyfit::Application.routes.draw do
   get "display/index"
+  
+  get "display/get_drugs", :to => "display#get_drugs", :as => :get_drugs
 
   resources :types
 
@@ -12,7 +14,8 @@ Quickyfit::Application.routes.draw do
   resources :users
 
   match 'items/get_children/:id' => 'items#get_children'
-  get 'contribution' => 'contributions#index', :as => 'contribution' 
+#  get 'contribution' => 'contributions#index', :as => 'contribution' 
+  
   resources :display do
   collection do
     get :get_drugs

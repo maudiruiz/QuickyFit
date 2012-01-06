@@ -1,3 +1,4 @@
+<script src="/assets/search_autocomplete2.js"></script>
 <%= form_for(@contribution) do |f| %>
   <% if @contribution.errors.any? %>
     <div id="error_explanation">
@@ -10,14 +11,19 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :first_item_id %><br />
-    <%= f.number_field :first_item_id %>
+	
+    <%= f.label :first_item_id%><br />
+    <%= text_field_tag :f1ID %>
+  <%= f.hidden_field :first_item_id %>
+
   </div>
   <div class="field">
     <%= f.label :second_item_id %><br />
-    <%= f.number_field :second_item_id %>
+    <%= text_field_tag :f2ID %>
+  <%= f.hidden_field :second_item_id %>
+
+
   </div>
   <div class="field">
     <%= f.label :user_id %><br />

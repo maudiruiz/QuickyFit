@@ -1,15 +1,19 @@
+<script src="/assets/search_autocomplete.js"></script>
 <%# debug @itemsok.to_a %>
 <%#= @itemsok.map{ |item| item.first_item.id } %><br>
 
 
 <%= form_tag(root_path, :method => "post") do %>
   <%= label_tag(:number1, "El que quiero") %>
-  <%= text_field_tag :quiero,nil, :class => 'drug_autocomplete' %>
+  <%= text_field_tag :quiero, nil, :class => 'drug_autocomplete' %>
   <%= hidden_field_tag :number1 %>
 
-  <%= label_tag(:number1, "Talla del que tengo") %>
-  <%= text_field_tag :tengo,nil, :class => 'drug_autocomplete' %>
+  <%= label_tag(:number1, "El modelo que tengo") %>
+  <%= text_field_tag :tengo, nil, :class => 'drug_autocomplete' %>
   <%= hidden_field_tag :number2 %>
+
+  <%= label_tag(:size1, "Talla de el que tengo") %>
+  <%= text_field_tag :size1%>
 
   <%= submit_tag("Do it!") %>
 
@@ -27,6 +31,8 @@
 
   <td style="width:150px;"><%= searches.second_item.description %> </td>
   <td style="width:150px; font-size:30px;"><%= searches.second_item_grade %>  </td>
+  <td style="width:150px; font-size:18px;"><a href="<%= contribution_path(searches.id) %>">Show</a>  </td>
+
 
 </tr>
 </table>
@@ -35,4 +41,5 @@ end%>
 <%= form_tag(root_path, :method => "get") do %>
 
 <% end %>
+</body>
 

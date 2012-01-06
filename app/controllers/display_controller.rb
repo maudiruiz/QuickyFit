@@ -1,21 +1,28 @@
 class DisplayController < ApplicationController
   
   def index
+    size1 = params[:size1]
+    number1 = params[:number1]
+    number2 = params[:number2]
+    quiero = params[:quiero]
+    tengo = params[:tengo]
     
-    if (not params[:number1].nil?) and (params[:number1] != "")
-      item1 = Item.find(params[:number1])
-    elsif not params[:quiero].nil?
-      item1 = Item.find(:first, :conditions => ['lower(description) LIKE ?', "%#{params[:quiero].downcase}%"])
+    if (not number1.nil?) and (number1 != "")
+      item1 = Item.find(number1)
+    elsif not quiero.nil?
+      quiero.strip!
+      item1 = Item.find(:first, :conditions => ['lower(description) LIKE ?', "%#{quiero.downcase}%"])
     end
 
-    if (not params[:number2].nil?) and (params[:number2] != "")
-      item2 = Item.find(params[:number2])
-    elsif not params[:tengo].nil?
-      item2 = Item.find(:first, :conditions => ['lower(description) LIKE ?', "%#{params[:tengo].downcase}%"])
+    if (not number2.nil?) and (number2 != "")
+      item2 = Item.find(number2)
+    elsif not tengo.nil?
+      tengo.strip!
+      item2 = Item.find(:first, :conditions => ['lower(description) LIKE ?', "%#{tengo.downcase}%"])
     end
 
     if (item1 and item2)
-      @itemsok = Contribution.where("first_item_id = ?",item1.id).where("second_item_id = ?",item2.id)
+      @itemsok = Contribution.where("first_item_id = ?",item1.id).where("second_item_id = ?",item2.id).where("second_item_grade = ?",size1)
     end
 
     respond_to do |format|
