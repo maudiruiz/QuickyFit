@@ -20,15 +20,21 @@ class DisplayController < ApplicationController
       tengo.strip!
       item2 = Item.find(:first, :conditions => ['lower(description) LIKE ?', "%#{tengo.downcase}%"])
     end
-
     if (item1 and item2)
+      @itemsok = Contribution.where("first_item_id = ?",item1.id).where("second_item_id = ?",item2.id)
+
+    elsif (item1 and item2 and size1)
+      
       @itemsok = Contribution.where("first_item_id = ?",item1.id).where("second_item_id = ?",item2.id).where("second_item_grade = ?",size1)
+  
+  
+      respond_to do |format|
+        format.js
+        format.html
+       
+      end
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @contributions }
-    end
   end
   
   def get_drugs
